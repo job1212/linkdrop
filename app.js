@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api';
+const API = 'https://linkdrop-production.up.railway.app/api';
 
 // Platform detection (for UI hints only — backend handles all URLs)
 const platformPatterns = {

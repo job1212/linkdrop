@@ -6,15 +6,7 @@ import '../models/media_info.dart';
 class ApiService {
   // On Android emulator use 10.0.2.2, on physical device use your PC's LAN IP
   // On web/Windows/macOS localhost works fine
-  static String get baseUrl {
-    // Live backend — works from anywhere
-    const liveUrl = 'https://linkdrop-production.up.railway.app/api';
-
-    if (kIsWeb) return liveUrl;
-    if (defaultTargetPlatform == TargetPlatform.android) return liveUrl;
-    if (defaultTargetPlatform == TargetPlatform.iOS) return liveUrl;
-    return liveUrl; // Windows/macOS/Linux desktop
-  }
+  static String get baseUrl => 'https://linkdrop-production.up.railway.app/api';
 
   static Future<MediaInfo> fetchInfo(String url) async {
     final uri = Uri.parse('$baseUrl/info?url=${Uri.encodeComponent(url)}');
