@@ -1,0 +1,8 @@
+node_modules/
+linkdrop_app/build/
+linkdrop_app/.dart_tool/
+linkdrop_app/.idea/
+linkdrop_app/*.iml
+linkdrop_app/android/local.properties
+linkdrop_app/android/.gradle/
+*.log
