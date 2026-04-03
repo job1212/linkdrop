@@ -14,7 +14,17 @@ app.use(express.static('.'));
 // Run yt-dlp and return parsed JSON output
 function ytDlp(args) {
   return new Promise((resolve, reject) => {
-    const proc = spawn('yt-dlp', args);
+    // Add cookies file if it exists or use env var
+    const cookiesArgs = [];
+    if (process.env.YOUTUBE_COOKIES) {
+      // Write cookies from env var to a temp file
+      const fs = require('fs');
+      const cookiePath = '/tmp/yt_cookies.txt';
+      fs.writeFileSync(cookiePath, process.env.YOUTUBE_COOKIES);
+      cookiesArgs.push('--cookies', cookiePath);
+    }
+
+    const proc = spawn('yt-dlp', [...cookiesArgs, ...args]);
     let stdout = '';
     let stderr = '';
 
